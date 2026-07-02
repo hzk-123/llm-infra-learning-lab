@@ -46,7 +46,7 @@ C++ / CUDA / Nsight
 
 ## 当前进度
 
-已经完成到 Day43：
+已经完成到 Day43，正在进入 Day44：
 
 ```text
 Day01-Day04：PyTorch next-token / Embedding / Bigram LM / Training Loop
@@ -56,6 +56,7 @@ Day14-Day18：FFN / Residual / LayerNorm / Tiny Transformer LM
 Day19-Day27：Generation / Prefill / Decode / KV Cache / 指标和 toy benchmark
 Day28-Day32：RMSNorm / SwiGLU / RoPE / MHA-MQA-GQA / Tiny Llama Block
 Day33-Day43：KV Cache Layout / Attention Scaling / PagedAttention Toy / Scheduler / Prefix Cache / vLLM Server
+Day44：vLLM Python Smoke Client
 ```
 
 Day43 已完成：
@@ -209,8 +210,7 @@ Megatron / DeepSpeed
 当前下一步建议：
 
 ```text
-复盘 Day43。
-确认 vLLM server 启动、关闭、重启流程熟练。
-然后再进入 Day44：Python smoke client。
+启动或确认 vLLM server 仍在运行。
+运行 Day44 Python smoke client。
+确认 Python 程序能拿到 latency 和 token usage。
 ```
-

@@ -153,13 +153,27 @@ logs/07_kv_cache_paged_attention/
 
 ## 下一阶段
 
-下一阶段会在真正开始 Day44 时再创建目录。
+Day44 已开始，因此创建 `08_serving_vllm` 阶段目录。
 
-预计主题：
+## 08 Serving vLLM
+
+当前阶段：
 
 ```text
-vLLM Python smoke client
-真实 latency 记录
-后续 streaming TTFT / TPOT benchmark
+docs/08_serving_vllm/
+exercises/08_serving_vllm/
 ```
 
+已创建：
+
+```text
+Day44：vLLM Python Smoke Client
+```
+
+后续预计：
+
+```text
+Day45：Streaming client，记录 TTFT / TPOT
+Day46：Workload benchmark
+Day47：vLLM 参数实验
+```
