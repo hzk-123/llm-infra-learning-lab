@@ -7,6 +7,7 @@ venv/
 .vscode/
 
 logs/*.md
+logs/**/*.log
 !logs/daily_log_template.md
 
 outputs/
@@ -14,8 +15,9 @@ checkpoints/
 data/
 *.egg-info/
 
+results/
+benchmarks/
 results/*.csv
 results/*.jsonl
-!results/.gitkeep
 benchmarks/*.csv
 benchmarks/*.jsonl

@@ -1,23 +1,32 @@
-# Milestone Index
+# 里程碑索引
 
-Day files are grouped by learning milestone. Each milestone has matching folders under:
+这个文件只记录已经创建并正在使用的学习阶段。
+
+原则：
 
 ```text
-docs/
-exercises/
-logs/
+学到哪个阶段，再创建哪个阶段的目录。
+不提前维护空目录。
+```
+
+每个阶段通常有三类文件：
+
+```text
+docs/       概念说明
+exercises/  可运行脚本
+logs/       学习日志
 ```
 
 ## 01 PyTorch LM Basics
 
-Days 01-04:
+Day01-Day04：
 
-- Day 01: next-token data
-- Day 02: embedding
-- Day 03: Bigram LM forward and loss
-- Day 04: Bigram LM training loop
+- Day01：next-token 数据构造
+- Day02：Embedding
+- Day03：Bigram LM forward 和 loss
+- Day04：Bigram LM training loop
 
-Paths:
+路径：
 
 ```text
 docs/01_pytorch_lm_basics/
@@ -27,13 +36,13 @@ logs/01_pytorch_lm_basics/
 
 ## 02 Text And Context Models
 
-Days 05-07:
+Day05-Day07：
 
-- Day 05: character tokenizer
-- Day 06: train Bigram LM on text
-- Day 07: MLP LM with fixed context
+- Day05：字符级 tokenizer
+- Day06：在文本上训练 Bigram LM
+- Day07：固定窗口 MLP LM
 
-Paths:
+路径：
 
 ```text
 docs/02_text_and_context_models/
@@ -43,16 +52,16 @@ logs/02_text_and_context_models/
 
 ## 03 Attention Foundations
 
-Days 08-13:
+Day08-Day13：
 
-- Day 08: positional embedding
-- Day 09: attention scores
-- Day 10: Q/K/V self-attention
-- Day 11: causal mask
-- Day 12: CausalSelfAttention module
-- Day 13: multi-head attention
+- Day08：Positional Embedding
+- Day09：Attention Scores
+- Day10：Q/K/V Self-Attention
+- Day11：Causal Mask
+- Day12：CausalSelfAttention Module
+- Day13：Multi-Head Attention
 
-Paths:
+路径：
 
 ```text
 docs/03_attention_foundations/
@@ -62,15 +71,15 @@ logs/03_attention_foundations/
 
 ## 04 Transformer LM
 
-Days 14-18:
+Day14-Day18：
 
-- Day 14: feed-forward network
-- Day 15: Transformer block with residual connection
-- Day 16: LayerNorm
-- Day 17: Tiny Transformer LM forward pass
-- Day 18: train Tiny Transformer LM on text
+- Day14：Feed-Forward Network
+- Day15：Residual Connection
+- Day16：LayerNorm
+- Day17：Tiny Transformer LM forward
+- Day18：训练 Tiny Transformer LM
 
-Paths:
+路径：
 
 ```text
 docs/04_transformer_lm/
@@ -80,19 +89,19 @@ logs/04_transformer_lm/
 
 ## 05 Inference Generation
 
-Days 19-27:
+Day19-Day27：
 
-- Day 19: generation mechanics
-- Day 20: prefill and decode
-- Day 21: KV cache intro
-- Day 22: KV cache memory estimate
-- Day 23: inference metrics
-- Day 24: benchmark workload design
-- Day 25: toy benchmark runner
-- Day 26: request timing with timestamps
-- Day 27: concurrent benchmark with ThreadPoolExecutor
+- Day19：Generation Mechanics
+- Day20：Prefill / Decode
+- Day21：KV Cache Intro
+- Day22：KV Cache Memory
+- Day23：Inference Metrics
+- Day24：Benchmark Workload Design
+- Day25：Toy Benchmark Runner
+- Day26：Request Timing
+- Day27：Concurrent Benchmark
 
-Paths:
+路径：
 
 ```text
 docs/05_inference_generation/
@@ -102,15 +111,15 @@ logs/05_inference_generation/
 
 ## 06 Realistic Transformer Components
 
-Days 28-32:
+Day28-Day32：
 
-- Day 28: RMSNorm vs LayerNorm
-- Day 29: SwiGLU FFN
-- Day 30: RoPE
-- Day 31: MHA / MQA / GQA shape and KV memory
-- Day 32: tiny Llama-style block
+- Day28：RMSNorm
+- Day29：SwiGLU
+- Day30：RoPE
+- Day31：MHA / MQA / GQA
+- Day32：Tiny Llama-style Block
 
-Paths:
+路径：
 
 ```text
 docs/06_realistic_transformer_components/
@@ -120,21 +129,21 @@ logs/06_realistic_transformer_components/
 
 ## 07 KV Cache Paged Attention
 
-Days 33-43:
+Day33-Day43：
 
-- Day 33: multi-head KV cache layout and append
-- Day 34: prefill attention scaling
-- Day 35: decode attention scaling
-- Day 36: PyTorch CUDA memory analysis
-- Day 37: KV block allocator
-- Day 38: toy PagedAttention page table
-- Day 39: toy serving scheduler
-- Day 40: continuous batching step-level scheduler
-- Day 41: prefix cache toy
-- Day 42: vLLM readiness checklist
-- Day 43: vLLM OpenAI-compatible server prep
+- Day33：Multi-head KV Cache Layout
+- Day34：Prefill Attention Scaling
+- Day35：Decode Attention Scaling
+- Day36：PyTorch CUDA Memory Analysis
+- Day37：KV Block Allocator
+- Day38：PagedAttention Page Table
+- Day39：Toy Serving Scheduler
+- Day40：Static vs Continuous Batching
+- Day41：Prefix Cache Toy
+- Day42：vLLM Readiness Check
+- Day43：vLLM Server Prep 和 Smoke Test
 
-Paths:
+路径：
 
 ```text
 docs/07_kv_cache_paged_attention/
@@ -142,20 +151,15 @@ exercises/07_kv_cache_paged_attention/
 logs/07_kv_cache_paged_attention/
 ```
 
-## 08 Serving vLLM
+## 下一阶段
 
-Days 44-48:
+下一阶段会在真正开始 Day44 时再创建目录。
 
-- Day 44: vLLM OpenAI-compatible server
-- Day 45: streaming benchmark client
-- Day 46: workload benchmark
-- Day 47: vLLM parameter experiments
-- Day 48: Transformers vs vLLM
-
-Paths:
+预计主题：
 
 ```text
-docs/08_serving_vllm/
-exercises/08_serving_vllm/
-logs/08_serving_vllm/
+vLLM Python smoke client
+真实 latency 记录
+后续 streaming TTFT / TPOT benchmark
 ```
+
