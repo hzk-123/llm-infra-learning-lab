@@ -169,11 +169,12 @@ exercises/08_serving_vllm/
 ```text
 Day44：vLLM Python Smoke Client
 Day45：Streaming Client，记录 TTFT / TPOT
+Day46：Warmup + Repeated Single-request Benchmark
 ```
 
 后续预计：
 
 ```text
-Day46：Workload benchmark
-Day47：vLLM 参数实验
+Day47：Workload benchmark
+Day48：vLLM 参数实验
 ```

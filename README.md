@@ -58,6 +58,7 @@ Day28-Day32：RMSNorm / SwiGLU / RoPE / MHA-MQA-GQA / Tiny Llama Block
 Day33-Day43：KV Cache Layout / Attention Scaling / PagedAttention Toy / Scheduler / Prefix Cache / vLLM Server
 Day44：vLLM Python Smoke Client
 Day45：Streaming Client，记录 TTFT / TPOT
+Day46：Warmup + Repeated Single-request Benchmark
 ```
 
 Day43 已完成：
@@ -212,6 +213,6 @@ Megatron / DeepSpeed
 
 ```text
 启动或确认 vLLM server 仍在运行。
-运行 Day45 streaming client。
-确认能拿到 TTFT、TPOT、total_latency 和 token usage。
+运行 Day46 repeated single-request benchmark。
+确认 warmup、p50、p95 的统计流程跑通。
 ```
