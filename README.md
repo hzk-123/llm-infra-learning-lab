@@ -59,6 +59,7 @@ Day33-Day43：KV Cache Layout / Attention Scaling / PagedAttention Toy / Schedul
 Day44：vLLM Python Smoke Client
 Day45：Streaming Client，记录 TTFT / TPOT
 Day46：Warmup + Repeated Single-request Benchmark
+Day47：Short / Long Prompt / Long Output Workload
 ```
 
 Day43 已完成：
@@ -213,6 +214,6 @@ Megatron / DeepSpeed
 
 ```text
 启动或确认 vLLM server 仍在运行。
-运行 Day46 repeated single-request benchmark。
-确认 warmup、p50、p95 的统计流程跑通。
+运行 Day47 workload single-request benchmark。
+比较 short prompt、long prompt、long output 的 TTFT / TPOT / latency。
 ```
