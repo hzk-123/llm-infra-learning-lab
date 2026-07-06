@@ -88,7 +88,7 @@ def query_nvidia_smi() -> list[dict[str, str]]:
 
 
 def last_regex_value(text: str, pattern: str) -> str:
-    matches = re.findall(pattern, text, flags=re.IGNORECASE)
+    matches = re.findall(pattern, text, flags=re.IGNORECASE | re.MULTILINE)
     if not matches:
         return "-"
     value = matches[-1]
@@ -108,17 +108,27 @@ def parse_server_log(log_path: str) -> dict[str, str]:
     return {
         "server_log": str(path),
         "server_log_found": "True",
-        "MODEL_ID": last_regex_value(text, r"MODEL_ID=(.+)"),
-        "SERVED_MODEL_NAME": last_regex_value(text, r"SERVED_MODEL_NAME=(.+)"),
-        "MAX_MODEL_LEN": last_regex_value(text, r"MAX_MODEL_LEN=(.+)"),
-        "GPU_MEMORY_UTILIZATION": last_regex_value(text, r"GPU_MEMORY_UTILIZATION=(.+)"),
-        "CUDA_VISIBLE_DEVICES": last_regex_value(text, r"CUDA_VISIBLE_DEVICES=(.+)"),
+        "MODEL_ID": last_regex_value(text, r"^\s*MODEL_ID=(.+)$"),
+        "SERVED_MODEL_NAME": last_regex_value(text, r"^\s*SERVED_MODEL_NAME=(.+)$"),
+        "MAX_MODEL_LEN": last_regex_value(text, r"^\s*MAX_MODEL_LEN=(.+)$"),
+        "GPU_MEMORY_UTILIZATION": last_regex_value(text, r"^\s*GPU_MEMORY_UTILIZATION=(.+)$"),
+        "CUDA_VISIBLE_DEVICES": last_regex_value(text, r"^\s*CUDA_VISIBLE_DEVICES=(.+)$"),
+        "checkpoint_size": last_regex_value(text, r"Checkpoint size:\s*([0-9.]+\s+[A-Za-z]+)"),
+        "model_loading_memory": last_regex_value(
+            text, r"Model loading took\s*([0-9.]+\s+[A-Za-z]+)\s+memory"
+        ),
+        "model_loading_time_s": last_regex_value(
+            text, r"Model loading took\s*[0-9.]+\s+[A-Za-z]+\s+memory and\s*([0-9.]+)\s*seconds"
+        ),
         "torch_compile_time_s": last_regex_value(text, r"torch\.compile took\s*([0-9.]+)\s*s"),
         "available_kv_cache_memory": last_regex_value(
             text, r"Available KV cache memory:\s*([0-9.]+\s+[A-Za-z]+)"
         ),
         "gpu_kv_cache_size_tokens": last_regex_value(
             text, r"GPU KV cache size:\s*([0-9,]+)\s+tokens"
+        ),
+        "max_concurrency_estimate": last_regex_value(
+            text, r"Maximum concurrency for\s*([0-9,]+\s+tokens per request:\s*[0-9.]+x)"
         ),
         "engine_init_time_s": last_regex_value(
             text, r"init engine .* took\s*([0-9.]+)\s*s"
@@ -352,6 +362,10 @@ def main() -> None:
         "gpu0_memory_total_mib": gpu0.get("memory_total_mib", "-"),
         "available_kv_cache_memory": log_info.get("available_kv_cache_memory", "-"),
         "gpu_kv_cache_size_tokens": log_info.get("gpu_kv_cache_size_tokens", "-"),
+        "checkpoint_size": log_info.get("checkpoint_size", "-"),
+        "model_loading_memory": log_info.get("model_loading_memory", "-"),
+        "model_loading_time_s": log_info.get("model_loading_time_s", "-"),
+        "max_concurrency_estimate": log_info.get("max_concurrency_estimate", "-"),
         "engine_init_time_s": log_info.get("engine_init_time_s", "-"),
         "torch_compile_time_s": log_info.get("torch_compile_time_s", "-"),
         "ttft_s": f"{metrics['ttft_s']:.6f}",
