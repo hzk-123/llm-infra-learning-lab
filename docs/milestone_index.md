@@ -173,10 +173,11 @@ Day46：Warmup + Repeated Single-request Benchmark
 Day47：Short / Long Prompt / Long Output Workload
 Day48：Concurrent Workload Benchmark
 Day49：0.5B vs 7B Model Size Probe
+Day50：7B Workload Benchmark
 ```
 
 后续预计：
 
 ```text
-Day50：vLLM 参数实验
+Day51：vLLM 参数实验
 ```
