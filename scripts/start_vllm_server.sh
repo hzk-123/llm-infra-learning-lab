@@ -8,6 +8,7 @@ PORT="${PORT:-8000}"
 DTYPE="${DTYPE:-auto}"
 MAX_MODEL_LEN="${MAX_MODEL_LEN:-2048}"
 GPU_MEMORY_UTILIZATION="${GPU_MEMORY_UTILIZATION:-0.85}"
+VLLM_EXTRA_ARGS="${VLLM_EXTRA_ARGS:-}"
 
 export CUDA_VISIBLE_DEVICES="${CUDA_VISIBLE_DEVICES:-0}"
 export HF_HOME="${HF_HOME:-$HOME/llm-sprint/model_cache/huggingface}"
@@ -24,10 +25,21 @@ echo "  PORT=$PORT"
 echo "  DTYPE=$DTYPE"
 echo "  MAX_MODEL_LEN=$MAX_MODEL_LEN"
 echo "  GPU_MEMORY_UTILIZATION=$GPU_MEMORY_UTILIZATION"
+echo "  VLLM_EXTRA_ARGS=${VLLM_EXTRA_ARGS:-<empty>}"
 echo "  CUDA_VISIBLE_DEVICES=$CUDA_VISIBLE_DEVICES"
 echo "  HF_HOME=$HF_HOME"
 echo "  HUGGINGFACE_HUB_CACHE=$HUGGINGFACE_HUB_CACHE"
 echo
+
+extra_args=()
+if [[ -n "$VLLM_EXTRA_ARGS" ]]; then
+  # VLLM_EXTRA_ARGS is intended for simple extra flags such as:
+  #   --enforce-eager
+  #   --disable-log-requests
+  # Avoid values that need nested quoting here.
+  # shellcheck disable=SC2206
+  extra_args=($VLLM_EXTRA_ARGS)
+fi
 
 vllm serve "$MODEL_ID" \
   --served-model-name "$SERVED_MODEL_NAME" \
@@ -35,5 +47,5 @@ vllm serve "$MODEL_ID" \
   --port "$PORT" \
   --dtype "$DTYPE" \
   --max-model-len "$MAX_MODEL_LEN" \
-  --gpu-memory-utilization "$GPU_MEMORY_UTILIZATION"
-
+  --gpu-memory-utilization "$GPU_MEMORY_UTILIZATION" \
+  "${extra_args[@]}"
