@@ -60,6 +60,7 @@ Day44：vLLM Python Smoke Client
 Day45：Streaming Client，记录 TTFT / TPOT
 Day46：Warmup + Repeated Single-request Benchmark
 Day47：Short / Long Prompt / Long Output Workload
+Day48：Concurrent Workload Benchmark
 ```
 
 Day43 已完成：
@@ -214,6 +215,6 @@ Megatron / DeepSpeed
 
 ```text
 启动或确认 vLLM server 仍在运行。
-运行 Day47 workload single-request benchmark。
-比较 short prompt、long prompt、long output 的 TTFT / TPOT / latency。
+运行 Day48 concurrent workload benchmark。
+观察 concurrency=1/2/4/8 下 QPS、aggregate output tokens/s 和 p95 latency 的变化。
 ```

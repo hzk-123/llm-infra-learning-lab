@@ -171,11 +171,11 @@ Day44：vLLM Python Smoke Client
 Day45：Streaming Client，记录 TTFT / TPOT
 Day46：Warmup + Repeated Single-request Benchmark
 Day47：Short / Long Prompt / Long Output Workload
+Day48：Concurrent Workload Benchmark
 ```
 
 后续预计：
 
 ```text
-Day48：并发 benchmark
 Day49：vLLM 参数实验
 ```
